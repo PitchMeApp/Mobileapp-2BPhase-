@@ -95,17 +95,20 @@ class _CustomHeaderViewState extends State<CustomHeaderView> {
   Widget iconAndProgressBar() {
     return Padding(
       padding: const EdgeInsets.only(top: 10, left: 20, right: 20),
-      child: Stack(
-        alignment: Alignment.center,
+      child: Column(
+        //alignment: Alignment.center,
         children: [
           Row(
             mainAxisAlignment: widget.progressPersent == 0.0
                 ? MainAxisAlignment.center
-                : MainAxisAlignment.start,
+                : MainAxisAlignment.spaceBetween,
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               widget.progressPersent == 0.0
-                  ? Container()
+                  ? Container(
+                      height: 5.h,
+                      width: 10.w,
+                    )
                   : InkWell(
                       onTap: () {
                         Navigator.of(context).pop();
@@ -124,17 +127,19 @@ class _CustomHeaderViewState extends State<CustomHeaderView> {
                       ),
                     ),
               Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
                   widget.progressPersent == 0.0
                       ? Container(
                           height: 5,
-                          width: MediaQuery.of(context).size.width * 0.5,
+                          width: MediaQuery.of(context).size.width - 130,
                           decoration: BoxDecoration(
                               borderRadius: BorderRadius.circular(5),
                               color: DynamicColor.lightGrey),
                         )
                       : LinearPercentIndicator(
-                          width: 280.0,
+                          width: MediaQuery.of(context).size.width - 130,
                           lineHeight: 7.0,
                           percent: widget.progressPersent,
                           backgroundColor: DynamicColor.lightGrey,
@@ -145,7 +150,7 @@ class _CustomHeaderViewState extends State<CustomHeaderView> {
                     padding: const EdgeInsets.only(top: 10),
                     child: Container(
                       alignment: Alignment.center,
-                      width: MediaQuery.of(context).size.width * 0.65,
+                      width: MediaQuery.of(context).size.width - 150,
                       child: Text(
                         widget.title,
                         style: blue19,
@@ -157,17 +162,20 @@ class _CustomHeaderViewState extends State<CustomHeaderView> {
                   ),
                   widget.icon.isNotEmpty
                       ? Padding(
-                          padding:
-                              EdgeInsets.only(top: 6.0, left: widget.padding),
+                          padding: EdgeInsets.only(top: 8.0),
                           child: Image.asset(
                             widget.icon,
                             height: 30,
                           ),
                         )
                       : Container(
-                          height: 60,
+                          height: 30,
                         ),
                 ],
+              ),
+              SizedBox(
+                height: 5.h,
+                width: 10.w,
               )
             ],
           ),
@@ -183,7 +191,7 @@ class _CustomHeaderViewState extends State<CustomHeaderView> {
       alignment:
           widget.subTitle2 != null ? Alignment.topLeft : Alignment.center,
       width: MediaQuery.of(context).size.width - 80,
-      margin: EdgeInsets.only(top: 12.h),
+      margin: EdgeInsets.only(top: 8),
       child: Text(
         widget.subTitle,
         style: blue12,
@@ -198,7 +206,7 @@ class _CustomHeaderViewState extends State<CustomHeaderView> {
     return Container(
       alignment: Alignment.topLeft,
       width: MediaQuery.of(context).size.width - 80,
-      margin: EdgeInsets.only(top: 17.h),
+      //margin: EdgeInsets.only(top: 0),
       child: Text(
         widget.subTitle2,
         style: blue12,
