@@ -209,7 +209,9 @@ class _NeedPageEditState extends State<NeedPageEdit> {
                     ],
                   ),
                 ),
-                _footerHint(),
+                _needPageController.selectedNeedType.value.isEmpty
+                    ? Container()
+                    : _footerHint(),
                 _needPageController.customText.value.isNotEmpty
                     ? _searchBar()
                     : Container(),
