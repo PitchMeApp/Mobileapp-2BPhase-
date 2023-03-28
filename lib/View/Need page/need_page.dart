@@ -206,7 +206,9 @@ class _NeedPageState extends State<NeedPage> {
                     ],
                   ),
                 ),
-                _footerHint(),
+               _needPageController.selectedNeedType.value.isEmpty
+                    ? Container()
+                    : _footerHint(),
                 _needPageController.customText.value.isNotEmpty
                     ? _searchBar()
                     : Container(),
